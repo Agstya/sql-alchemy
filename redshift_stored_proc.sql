@@ -1,5 +1,5 @@
 -- UDF #1
-CREATE FUNCTION f_no_of_workingdays(datetime, datetime)
+CREATE FUNCTION f_no_of_workingdays (datetime, datetime)
 RETURNS bigint
 STABLE 
 AS $$ 
