@@ -14,7 +14,7 @@ $$ language sql;
 
 -- Example #1:
 -- SELECT no_of_working_days('01/11/2018 00:00:00', '09/11/2018')
-
+------------------------------------------------------------------------------------------
 -- UDF #2
 create function f_sql_greater (float, float)
   returns float
@@ -27,3 +27,17 @@ $$ language sql;
 
 -- Example #2:
 -- select f_sql_greater(commission, pricepaid*0.20) from sales;
+----------------------------------------------------------------------------------------------
+-- UDF #3
+create or replace function f_py_greater (a float, b float)
+  returns float
+stable
+as $$
+  if a > b:
+    return a
+  return b
+$$ language plpythonu;
+
+-- Example #:3
+-- select f_sql_greater(commission, pricepaid*0.20) from sales;
+-----------------------------------------------------------------------------------------------------
