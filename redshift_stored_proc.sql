@@ -40,4 +40,5 @@ $$ language plpythonu;
 
 -- Example #:3
 -- select f_sql_greater(commission, pricepaid*0.20) from sales;
+-- select f_sql_greater(1.0, 2.8*0.20);
 -----------------------------------------------------------------------------------------------------
