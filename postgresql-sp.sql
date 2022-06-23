@@ -17,4 +17,4 @@ CREATE TABLE IF NOT EXISTS emp(
   description text)
 
 INSERT INTO emp(id, fName, lName, isEmployed, hireDate, rating, salary, description)
-VALUES ($1, $2, $3, $4,
+VALUES ($1, $2, $3, $4, $5, $6, $7)
