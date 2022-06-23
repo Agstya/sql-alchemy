@@ -28,3 +28,26 @@ SELECT * FROM #temp_employee;
 --- To use this store procedure
 EXEC Tmp_Employee;
 -----------------------------------------------
+ALTER PROCEDURE Tmp_Employee
+@JobTitle NVARCHAR(100)
+AS
+CREATE OR REPLACE TABLE #temp_employee (
+  JobTitle VARCHAR(100),
+  EmployeesPerJob INT,
+  AvgAge INT,
+  AvgSalary INT
+  );
+  
+INSERT INTO #temp_employee
+ SELECT JobTitle, COUNT(JobTitle), AVG(Age), AVG(Salary)
+ FROM dbo.EmployeeDemographics emp
+ JOIN dbo.EmployeeSalary sal
+ ON emp.EmployeeID = sal.EmployeeID
+ WHERE JobTitle = @JobTitle -- param used
+ GROUP BY JobTitle;
+ 
+SELECT * FROM #temp_employee;
+
+--- To use this store procedure
+EXEC Tmp_Employee @JobTitle = 'SalesRep';
+-----------------------------------------------
